@@ -1,6 +1,14 @@
 import { ESchemaType, ESetSchemaType } from "./enum.type";
 import type { TDataSchema, TUiSchema } from "./schema.type";
 
+// ???
+export type TClosestEdge = "top" | "bottom" | "left" | "right" | "over";
+
+// 函数
+export type TFunction = {
+  [propName: string]: (...args: any[]) => any;
+};
+
 // 拓展对象属性
 export type TKeyStringAnyMap = {
   [key: string]: any;
@@ -56,8 +64,20 @@ export type TMergeFieldKey = (
  */
 export type TDeleteFieldKey = (fieldKey: string, cb?: () => void) => void;
 
-// ???
-export type TClosestEdge = "top" | "bottom" | "left" | "right" | "over";
+type TAddFieldKeyParams = {
+  fieldKey: string;
+  closestEdge: TClosestEdge;
+  // TODO: 联合类型?
+  unitedSchema: TKeyStringAnyMap;
+  overFieldKey: string;
+  shouldDelte: boolean;
+  cb: () => void;
+};
+/**
+ * 增加 fieldKey
+ * @param fieldKey TAddFieldKeyParams 添加key需要的参数
+ */
+export type TAddFieldKey = (fieldKey: TAddFieldKeyParams) => void;
 
 //
 export type TDispatch<A> = (value: A) => void;

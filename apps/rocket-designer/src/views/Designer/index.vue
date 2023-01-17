@@ -1,5 +1,11 @@
 <script lang="ts" setup>
 import RocketForm from '@rocket/rocket-form';
+import { reactive } from 'vue';
+
+const shema = reactive({ 
+  
+ })
+
 
 </script>
 

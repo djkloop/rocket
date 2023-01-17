@@ -1,4 +1,4 @@
-import { defineComponent } from "vue";
+import { defineComponent, onErrorCaptured } from "vue";
 import type { PropType } from "vue";
 import RocketFormErrorHoc from "./RocketFormHoc/RocketFormErrorHoc";
 import RocketForm from "./RocketForm";
@@ -12,7 +12,14 @@ export default defineComponent({
     },
   },
   setup(props) {
-    console.log("RocketFormContainer", props.msg);
-    return () => <RocketForm msg={props.msg} />;
+    onErrorCaptured((err) => {
+      console.log(err, " RocketFormRegisterHoc ");
+    });
+
+    return () => (
+      <RocketFormErrorHoc>
+        <RocketForm msg={props.msg} />
+      </RocketFormErrorHoc>
+    );
   },
 });
