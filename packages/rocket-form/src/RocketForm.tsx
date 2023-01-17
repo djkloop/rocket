@@ -5,6 +5,7 @@ import {
   type TGlobalFormOptionsProps,
 } from "@rocket/rocket-hook";
 import RocketFormItem from "./RocketFormItem";
+import { ThemeContextProvider } from "./RocketFormContext";
 
 export default defineComponent({
   name: "RocketForm",
@@ -23,8 +24,10 @@ export default defineComponent({
     return () => (
       <>
         <GlobalFormOptionsContextProvider defaultGlobalOptions={globalOptions}>
-          <div>good2 - {props.msg}</div>
-          <RocketFormItem />
+          <ThemeContextProvider defaultTheme="dark">
+            <div>good2 - {props.msg}</div>
+            <RocketFormItem />
+          </ThemeContextProvider>
         </GlobalFormOptionsContextProvider>
       </>
     );

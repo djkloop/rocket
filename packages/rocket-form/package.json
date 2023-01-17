@@ -16,7 +16,7 @@
     "@rocket/rocket-hook": "workspace:^0.0.0",
     "@rocket/rocket-table": "workspace:^0.0.0",
     "immer": "^9.0.17",
-    "vc-state": "^1.1.0",
+    "vc-state": "^1.2.0",
     "vue": "^3.2.45"
   },
   "devDependencies": {

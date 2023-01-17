@@ -18,8 +18,6 @@ const [ThemeContextProvider, useThemeContext] = createContext(
   }
 );
 
+ThemeContextProvider.displayName = "ThemeContextProvider";
 
-export {
-  ThemeContextProvider,
-  useThemeContext
-}
+export { ThemeContextProvider, useThemeContext };

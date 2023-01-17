@@ -1,8 +1,11 @@
 import type { DefineComponent } from "vue";
-import type { TGetKey } from "./action.type";
-import type { TKeyStringAnyMap, TDispatch } from "./common.type";
+import type { TAciton } from "./action.type";
+import type { TDeleteFieldKey, TGetFieldKey, TMergeFieldKey, TSetFieldKey } from "./common.type";
+import type { TKeyStringAnyMap, TDispatch as TDispatchR } from "./common.type";
 import type { TFlow } from "./flow-action.type";
 import type { TTheme } from "./theme.type";
+
+export type TDispatch = TDispatchR<TAciton>;
 
 // ??
 export enum EUiSchemaFormMode {
@@ -23,10 +26,11 @@ export enum EUiSchemaMode {
 // 标题位置
 export type TTitlePlacemenetPosition = "left" | "right" | "top" | "bottom";
 
+// OnChange 传递参数
 type TOnChangeParams = {
   val: any;
-  dispatch: TDispatch<any>;
-  getKey: TGetKey;
+  dispatch: TDispatch;
+  getKey: TGetFieldKey;
   fieldKey: string;
   prevFieldData: any;
   fieldData: any;
@@ -116,7 +120,7 @@ export type TUiSchema = {
   theme: TTheme;
   // 类型
   type: string;
-  //
+  // 拓展属性
   [propName: string]: unknown;
 };
 
@@ -174,4 +178,34 @@ export type TUiComponents = Partial<Record<TTheme, TUiComponentType>>;
  */
 export type TCustomComponents = Record<string, DefineComponent>;
 
-export type TCustomFunc = (val: any) => void;
+/**
+ * 函数占位符
+ * @url https://jdfed.github.io/drip-form/docs/use/customFunc
+ */
+export type TCustomFunc = (
+  val: any,
+  dispatch: TDispatch,
+  fieldKey: string,
+  prevFieldData?: any
+) => void;
+
+
+type TControlFuncParams = {
+  formData: TKeyStringAnyMap
+  uiSchema: TKeyStringAnyMap // 这里不应该是用uiSchema?
+  dataSchema: TKeyStringAnyMap // 这里不应该是用dataSchema?
+  dispatch: TDispatch
+  changeKey: string
+  checking: boolean
+  get: TGetFieldKey
+  set: TSetFieldKey
+  merge: TMergeFieldKey
+  delete: TDeleteFieldKey
+  errors: TKeyStringAnyMap
+}
+
+/**
+ * control 联动控制（简单的）
+ * @url https://jdfed.github.io/drip-form/docs/use/control
+ */
+export type TControlFunc = (params: TControlFuncParams) => void;

@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "immer": "^9.0.17",
-    "vc-state": "^1.1.0",
+    "vc-state": "^1.2.0",
     "vue": "^3.2.45"
   },
   "devDependencies": {

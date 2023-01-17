@@ -71,6 +71,9 @@ const [GlobalFormOptionsContextProvider, useGlobalFormOptionsContext] =
     return { defaultGlobalFormOptions };
   });
 
+GlobalFormOptionsContextProvider.displayName =
+  "GlobalFormOptionsContextProvider";
+
 export { GlobalFormOptionsContextProvider };
 
 export default useGlobalFormOptionsContext;

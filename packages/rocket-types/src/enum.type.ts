@@ -4,3 +4,9 @@ export enum ESchemaType {
   DATA = "data",
   UNITEDSCHEMA = "unitedSchema",
 }
+
+export enum ESetSchemaType {
+  DATA = "data",
+  UISCHEMA = "uiSchema",
+  DATASCHEMA = "dataSchema",
+}

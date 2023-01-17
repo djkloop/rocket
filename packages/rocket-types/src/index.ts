@@ -1,7 +1,10 @@
 import type { Plugin, Options } from "ajv/dist/2019";
+import type { VNode } from "vue";
 import type { TKeyStringAnyMap } from "./common.type";
 import type {
+  TControlFunc,
   TCustomComponents,
+  TCustomFunc,
   TUiComponents,
   TUnitedSchema,
 } from "./schema.type";
@@ -16,6 +19,10 @@ export type TRocketFormProps = {
   formData?: TKeyStringAnyMap;
   // 自定组件
   customComponents?: TCustomComponents;
+  // 自定义占位符函数
+  customFunc?: Record<string, TCustomFunc | VNode>;
+  //
+  control?: TControlFunc;
   /********************************* 必填属性 **************************************/
   // 联合 json schema, 必填
   unitedSchema: TUnitedSchema;
