@@ -127,6 +127,7 @@ importers:
 
   packages/rocket-ajv:
     specifiers:
+      '@rocket/rocket-ajv-plugins': workspace:^0.0.0
       ajv: ^8.12.0
       ajv-errors: ^3.0.0
       ajv-formats: ^2.1.1
@@ -135,6 +136,7 @@ importers:
       typescript: ^4.9.3
       vite: ^4.0.0
     dependencies:
+      '@rocket/rocket-ajv-plugins': link:../rocket-ajv-plugins
       ajv: 8.12.0
       ajv-errors: 3.0.0_ajv@8.12.0
       ajv-formats: 2.1.1_ajv@8.12.0

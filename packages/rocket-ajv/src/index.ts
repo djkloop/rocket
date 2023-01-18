@@ -7,6 +7,8 @@ import ajvKeywords from "ajv-keywords";
 import ajvErrors from "ajv-errors";
 import ajvFormats from "ajv-formats";
 import ajvFormatsDraft2019Apply from "ajv-formats-draft2019";
+// custom ajv plugins
+import rocketAjvPlugins from "@rocket/rocket-ajv-plugins";
 
 import type Ajv from "ajv/dist/2019";
 import type { Plugin, Options } from "ajv/dist/2019";
@@ -58,6 +60,10 @@ const registerAjv = (options?: Options): Ajv => {
     "transformToObject",
     "flow",
   ]);
+
+  rocketAjvPlugins.addKeywords(ajv);
+
+  rocketAjvPlugins.addFormats(ajv);
 
   return ajv;
 };

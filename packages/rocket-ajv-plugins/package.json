@@ -1,5 +1,5 @@
 {
-  "name": "@rocket/rocket-ajv",
+  "name": "@rocket/rocket-ajv-plugins",
   "private": true,
   "version": "0.0.0",
   "main": "./src/index.ts",
@@ -15,11 +15,6 @@
     "vite": "^4.0.0"
   },
   "dependencies": {
-    "@rocket/rocket-ajv-plugins": "workspace:^0.0.0",
-    "ajv": "^8.12.0",
-    "ajv-errors": "^3.0.0",
-    "ajv-formats": "^2.1.1",
-    "ajv-formats-draft2019": "^1.6.1",
-    "ajv-keywords": "^5.1.0"
+    "ajv": "^8.12.0"
   }
 }
