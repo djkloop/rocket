@@ -1,4 +1,4 @@
-import type { CSSProperties, VNode, VueElement } from "vue";
+import type { CSSProperties, VNode } from "vue";
 
 // Hoc
 export type TContainerHoc = (

@@ -4,10 +4,12 @@ importers:
 
   .:
     specifiers:
+      '@rocket/rocket-types': workspace:^0.0.0
       eslint-config-custom: workspace:*
       prettier: latest
       turbo: latest
     devDependencies:
+      '@rocket/rocket-types': link:packages/rocket-types
       eslint-config-custom: link:packages/eslint-config-custom
       prettier: 2.8.3
       turbo: 1.7.0
@@ -151,6 +153,7 @@ importers:
       '@rocket/rocket-ajv': workspace:^0.0.0
       '@rocket/rocket-hook': workspace:^0.0.0
       '@rocket/rocket-table': workspace:^0.0.0
+      '@rocket/rocket-types': workspace:^0.0.0
       '@rushstack/eslint-patch': ^1.1.4
       '@types/jsdom': ^20.0.1
       '@types/node': ^18.11.12
@@ -160,6 +163,7 @@ importers:
       '@vue/eslint-config-typescript': ^11.0.0
       '@vue/test-utils': ^2.2.6
       '@vue/tsconfig': ^0.1.3
+      ajv: ^8.12.0
       eslint: ^8.22.0
       eslint-plugin-vue: ^9.3.0
       immer: ^9.0.17
@@ -176,10 +180,12 @@ importers:
       '@rocket/rocket-ajv': link:../rocket-ajv
       '@rocket/rocket-hook': link:../rocket-hook
       '@rocket/rocket-table': link:../rocket-table
+      ajv: 8.12.0
       immer: 9.0.17
       vc-state: 1.2.0_vue@3.2.45
       vue: 3.2.45
     devDependencies:
+      '@rocket/rocket-types': link:../rocket-types
       '@rushstack/eslint-patch': 1.2.0
       '@types/jsdom': 20.0.1
       '@types/node': 18.11.18
@@ -1564,7 +1570,7 @@ packages:
       vite: ^4.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 4.0.3_@types+node@18.11.18
+      vite: 4.0.3
       vue: 3.2.45
     dev: true
 

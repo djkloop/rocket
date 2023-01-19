@@ -16,11 +16,13 @@
     "@rocket/rocket-ajv": "workspace:^0.0.0",
     "@rocket/rocket-hook": "workspace:^0.0.0",
     "@rocket/rocket-table": "workspace:^0.0.0",
+    "ajv": "^8.12.0",
     "immer": "^9.0.17",
     "vc-state": "^1.2.0",
     "vue": "^3.2.45"
   },
   "devDependencies": {
+    "@rocket/rocket-types": "workspace:^0.0.0",
     "@rushstack/eslint-patch": "^1.1.4",
     "@types/jsdom": "^20.0.1",
     "@types/node": "^18.11.12",

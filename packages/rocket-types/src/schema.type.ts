@@ -1,11 +1,16 @@
-import type { DefineComponent } from "vue";
+import type { DefineComponent, VNode } from "vue";
 import type { TAciton } from "./action.type";
-import type { TDeleteFieldKey, TGetFieldKey, TMergeFieldKey, TSetFieldKey } from "./common.type";
+import type {
+  TDeleteFieldKey,
+  TGetFieldKey,
+  TMergeFieldKey,
+  TSetFieldKey,
+} from "./common.type";
 import type { TKeyStringAnyMap, TDispatch as TDispatchR } from "./common.type";
 import type { TFlow } from "./flow-action.type";
 import type { TTheme } from "./theme.type";
 
-export type TDispatch = TDispatchR<TAciton>;
+export type TSchemaDispatch = TDispatchR<TAciton>;
 
 // ??
 export enum EUiSchemaFormMode {
@@ -29,7 +34,7 @@ export type TTitlePlacemenetPosition = "left" | "right" | "top" | "bottom";
 // OnChange 传递参数
 type TOnChangeParams = {
   val: any;
-  dispatch: TDispatch;
+  dispatch: TSchemaDispatch;
   getKey: TGetFieldKey;
   fieldKey: string;
   prevFieldData: any;
@@ -184,25 +189,24 @@ export type TCustomComponents = Record<string, DefineComponent>;
  */
 export type TCustomFunc = (
   val: any,
-  dispatch: TDispatch,
+  dispatch: TSchemaDispatch,
   fieldKey: string,
   prevFieldData?: any
 ) => void;
 
-
 type TControlFuncParams = {
-  formData: TKeyStringAnyMap
-  uiSchema: TKeyStringAnyMap // 这里不应该是用uiSchema?
-  dataSchema: TKeyStringAnyMap // 这里不应该是用dataSchema?
-  dispatch: TDispatch
-  changeKey: string
-  checking: boolean
-  get: TGetFieldKey
-  set: TSetFieldKey
-  merge: TMergeFieldKey
-  delete: TDeleteFieldKey
-  errors: TKeyStringAnyMap
-}
+  formData: TKeyStringAnyMap;
+  uiSchema: TKeyStringAnyMap; // 这里不应该是用uiSchema?
+  dataSchema: TKeyStringAnyMap; // 这里不应该是用dataSchema?
+  dispatch: TSchemaDispatch;
+  changeKey: string;
+  checking: boolean;
+  get: TGetFieldKey;
+  set: TSetFieldKey;
+  merge: TMergeFieldKey;
+  delete: TDeleteFieldKey;
+  errors: TKeyStringAnyMap;
+};
 
 /**
  * control 联动控制（简单的）

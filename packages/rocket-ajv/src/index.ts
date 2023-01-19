@@ -67,3 +67,33 @@ const registerAjv = (options?: Options): Ajv => {
 
   return ajv;
 };
+
+const loadAjvPlugins = (
+  ajv: Ajv,
+  plugins?: Plugin<Options>[] | Plugin<Options>
+) => {
+  if (plugins) {
+    if (Array.isArray(plugins)) {
+      plugins.forEach(async (plugin) => {
+        try {
+          plugin(ajv);
+        } catch (error) {
+          console.error(`load ajv plugin - ${plugins} - error`);
+          console.error(error);
+        }
+      });
+    } else if (typeof plugins === "function") {
+      try {
+        plugins(ajv);
+      } catch (error) {
+        console.error("load ajv plugin error");
+        console.error(error);
+      }
+    }
+  }
+};
+
+export default {
+  registerAjv,
+  loadAjvPlugins,
+};
