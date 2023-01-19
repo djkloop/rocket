@@ -1,11 +1,17 @@
-import { defineComponent, onErrorCaptured, resolveComponent } from "vue";
+import { defineComponent, onErrorCaptured } from "vue";
 import type { PropType } from "vue";
 import RocketFormErrorHoc from "./RocketFormHoc/RocketFormErrorHoc";
 import RocketForm from "./RocketForm";
 import RocketFormRegisterHoc from "./RocketFormHoc/RocketFormRegisterHoc";
 
-const customComponent = defineComponent({
+const CustomComponent = defineComponent({
   name: "Custom1",
+  props: {
+    msg: {
+      type: String,
+      required: true as const,
+    },
+  },
   setup() {
     return () => <div>124</div>;
   },
@@ -24,9 +30,13 @@ export default defineComponent({
       console.log(err, " RocketFormRegisterHoc ");
     });
 
+    const components = {
+      custom1: CustomComponent,
+    };
+
     return () => (
       <>
-        <RocketFormRegisterHoc customComponents={{ custom1: customComponent }}>
+        <RocketFormRegisterHoc customComponents={components}>
           <RocketFormErrorHoc>
             <RocketForm msg={props.msg} />
           </RocketFormErrorHoc>

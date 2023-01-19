@@ -20,9 +20,15 @@ export default defineComponent({
     // register
     useRegisterHoc();
 
-    console.log(props.ajvOptions);
+    console.log(props.customComponents.custom1, " props.customComponents ");
+
+    const C = props.customComponents.custom1;
 
     const slots = useSlots();
-    return () => <>{slots.default?.()}</>;
+    return () => (
+      <>
+        <C>{slots.default?.()}</C>
+      </>
+    );
   },
 });

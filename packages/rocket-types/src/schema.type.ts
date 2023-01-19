@@ -1,4 +1,4 @@
-import type { DefineComponent, VNode } from "vue";
+import type { Component } from "vue";
 import type { TAciton } from "./action.type";
 import type {
   TDeleteFieldKey,
@@ -9,6 +9,11 @@ import type {
 import type { TKeyStringAnyMap, TDispatch as TDispatchR } from "./common.type";
 import type { TFlow } from "./flow-action.type";
 import type { TTheme } from "./theme.type";
+
+/**
+ * 自定义组件类型
+ */
+export type TCustomComponents = Record<string, Component>;
 
 export type TSchemaDispatch = TDispatchR<TAciton>;
 
@@ -177,11 +182,6 @@ export type TUiComponentType = {
  * 支持不同组件使用不同的ui库
  */
 export type TUiComponents = Partial<Record<TTheme, TUiComponentType>>;
-
-/**
- * 自定义组件类型
- */
-export type TCustomComponents = Record<string, DefineComponent>;
 
 /**
  * 函数占位符

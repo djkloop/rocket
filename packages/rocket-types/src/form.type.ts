@@ -1,5 +1,5 @@
 // libs types
-import type { Ref, VNode } from "vue";
+import type { DefineComponent, Ref, VNode } from "vue";
 import type { Plugin, Options } from "ajv/dist/2019";
 // types
 import type {
@@ -58,7 +58,7 @@ export type TRocketFormProps = {
   // ajvOptions
   ajvOptions?: Options;
   // 全局数据, 需要每个组件使用
-  globalContextData?: Record<string, unknown>;
+  globalContextData?: Record<string, any>;
   // 表单数据
   formData?: TKeyStringAnyMap;
   // 自定组件
