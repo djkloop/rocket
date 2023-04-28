@@ -1,6 +1,7 @@
 // libs types
 import type { DefineComponent, Ref, VNode } from "vue";
 import type { Plugin, Options } from "ajv/dist/2019";
+import type Ajv from 'ajv/dist/2019'
 // types
 import type {
   TAddFieldKey,
@@ -95,3 +96,8 @@ export type TRocketFormProps = {
   // 组件对应ui库, 必填
   uiComponents: TUiComponents;
 };
+
+
+export type TRocketFormRenderProps = {
+  ajv: Ajv
+} & TRocketFormProps

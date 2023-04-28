@@ -1,6 +1,6 @@
-import type { Component, PropType } from "vue";
+import type { PropType } from "vue";
 import type { Options, Plugin } from "ajv/dist/2019";
-import type { TCustomComponents, TKeyStringAnyMap } from "@rocket/rocket-types";
+import type { TKeyStringAnyMap } from "@rocket/rocket-types";
 
 // rocket form props
 export const RocketFormProps = {
@@ -15,9 +15,5 @@ export const RocketFormProps = {
   },
   formData: {
     type: Object as PropType<TKeyStringAnyMap>,
-  },
-  customComponents: {
-    type: Object as PropType<Record<string, Component>>,
-    required: true as const,
   },
 };

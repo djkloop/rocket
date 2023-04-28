@@ -1,26 +1,35 @@
-import { defineComponent, reactive, type PropType } from "vue";
+import { defineComponent, reactive, type PropType, computed, ref } from "vue";
 import {
   GlobalFormOptionsContextProvider,
-  type TGlobalFormOptions,
-  type TGlobalFormOptionsProps,
+  GlobalFormStateContextProvider,
+  defaultGlobalState,
+  defaultGlobalOptions,
 } from "@rocket/rocket-hook";
 import RocketFormItem from "./RocketFormItem";
 import { ThemeContextProvider } from "./RocketFormContext";
 
 export default defineComponent({
   name: "RocketForm",
-  props: {
-    msg: {
-      type: String as PropType<String>,
-      required: true,
-    },
-  },
   setup(props) {
-    console.log("RocketForm", props.msg);
-    const globalOptions = reactive<TGlobalFormOptions>({
+    // 模拟props
+    const _props = {
       reload: true,
-      ajvValidateDelay: 1,
-    });
+      options: {},
+    };
+
+    console.log("RocketForm");
+    const globalOptions = computed(() => ({
+      ...defaultGlobalOptions,
+      reload: _props.reload,
+      ..._props.options,
+    }));
+
+    const globalState = ref(defaultGlobalState);
+
+    // const globalOptions = reactive<TGlobalFormOptions>({
+    //   reload: true,
+    //   ajvValidateDelay: 1,
+    // });
 
     const schema = reactive({
       $schema: "http://json-schema.org/draft-07/schema#",
@@ -39,10 +48,12 @@ export default defineComponent({
 
     return () => (
       <>
-        <GlobalFormOptionsContextProvider defaultGlobalOptions={globalOptions}>
-          <ThemeContextProvider defaultTheme="dark">
-            <RocketFormItem />
-          </ThemeContextProvider>
+        <GlobalFormOptionsContextProvider {...defaultGlobalOptions}>
+          <GlobalFormStateContextProvider>
+            <ThemeContextProvider defaultTheme="dark">
+              <RocketFormItem />
+            </ThemeContextProvider>
+          </GlobalFormStateContextProvider>
         </GlobalFormOptionsContextProvider>
       </>
     );

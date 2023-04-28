@@ -4,19 +4,6 @@ import RocketFormErrorHoc from "./RocketFormHoc/RocketFormErrorHoc";
 import RocketForm from "./RocketForm";
 import RocketFormRegisterHoc from "./RocketFormHoc/RocketFormRegisterHoc";
 
-const CustomComponent = defineComponent({
-  name: "Custom1",
-  props: {
-    msg: {
-      type: String,
-      required: true as const,
-    },
-  },
-  setup() {
-    return () => <div>124</div>;
-  },
-});
-
 export default defineComponent({
   name: "RocketFormContainer",
   props: {
@@ -30,15 +17,11 @@ export default defineComponent({
       console.log(err, " RocketFormRegisterHoc ");
     });
 
-    const components = {
-      custom1: CustomComponent,
-    };
-
     return () => (
       <>
-        <RocketFormRegisterHoc customComponents={components}>
+        <RocketFormRegisterHoc>
           <RocketFormErrorHoc>
-            <RocketForm msg={props.msg} />
+            <RocketForm />
           </RocketFormErrorHoc>
         </RocketFormRegisterHoc>
       </>

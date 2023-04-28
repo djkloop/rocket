@@ -43,30 +43,28 @@ export type TGlobalFormOptions = Partial<{
   ajvValidateDelay: number;
 }>;
 
-export type TGlobalFormOptionsProps = {
-  defaultGlobalOptions: TGlobalFormOptions;
-};
+export const defaultGlobalOptions: TGlobalFormOptions = {
+  reload: true,
+  ajvValidateDelay: 0,
+  undefinedComponent: {
+    type: EUndefinedComponentType.TIPS,
+    value: ({ theme, type, fieldKey }) => {
+      if (theme && type) {
+        return `无法找到主题${theme}中的${type}组件，请确认是否导入`;
+      } else {
+        return `无法找到自定义组件${fieldKey}，请确认是否导入`;
+      }
+    },
+  },
+}
 
 // create context
 const [GlobalFormOptionsContextProvider, useGlobalFormOptionsContext] =
-  createContext((props: TGlobalFormOptionsProps) => {
-    const defaultGlobalFormOptions: TGlobalFormOptions = reactive({
-      reload: true,
-      ajvValidateDelay: 0,
-      undefinedComponent: {
-        type: EUndefinedComponentType.TIPS,
-        value: ({ theme, type, fieldKey }) => {
-          if (theme && type) {
-            return `无法找到主题${theme}中的${type}组件，请确认是否导入`;
-          } else {
-            return `无法找到自定义组件${fieldKey}，请确认是否导入`;
-          }
-        },
-      },
-    });
+  createContext((props: TGlobalFormOptions) => {
+    const defaultGlobalFormOptions: TGlobalFormOptions = reactive(defaultGlobalOptions);
 
     // 合并一下值
-    Object.assign(defaultGlobalFormOptions, props.defaultGlobalOptions);
+    Object.assign(defaultGlobalFormOptions, props);
 
     return { defaultGlobalFormOptions };
   });

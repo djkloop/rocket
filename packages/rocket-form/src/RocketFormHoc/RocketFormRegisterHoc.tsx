@@ -1,5 +1,5 @@
 import { useRegisterHoc } from "../composables/useRegister";
-import { defineComponent, reactive, useSlots } from "vue";
+import { defineComponent, reactive, resolveComponent, useSlots } from "vue";
 
 // props
 import { RocketFormProps } from "../RocketFormProps";
@@ -20,14 +20,10 @@ export default defineComponent({
     // register
     useRegisterHoc();
 
-    console.log(props.customComponents.custom1, " props.customComponents ");
-
-    const C = props.customComponents.custom1;
-
     const slots = useSlots();
     return () => (
       <>
-        <C>{slots.default?.()}</C>
+        <div>{slots.default?.()}</div>
       </>
     );
   },
